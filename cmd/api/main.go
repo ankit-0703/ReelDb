@@ -2,11 +2,7 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log/slog"
-	"net/http"
-	"os"
-	"time"
 )
 
 // currVer will represent the latest version. For now it is hard coded, later, this will be automatically updated.
@@ -15,15 +11,15 @@ const currVer = "1.0.0"
 
 // config is a structure, that will contain the configuration settings for our application.
 // for now it is just aq port and a current environment
-type config struct{
+type config struct {
 	port int
-	env string
+	env  string
 }
 
 // application structure holds the dependencies for our HTTP handlers, helpers,
-// and middleware. for Now, it just contains config structure copy and a logger  
+// and middleware. for Now, it just contains config structure copy and a logger
 
-type application struct{
+type application struct {
 	config config
 	logger *slog.Logger
 }
@@ -35,5 +31,7 @@ func main() {
 
 	var cfg config
 
-	flag.IntVar(&cfg.port,"port : ",4000, "API Server running")
+	flag.IntVar(&cfg.port, "port : ", 4000, "API Server running")
+	flag.StringVar(&cfg.env, "env", "Development", "Environment(developent | staging | Production)")
+	flag.Parse()
 }

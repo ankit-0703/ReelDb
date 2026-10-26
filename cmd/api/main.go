@@ -11,7 +11,7 @@ import (
 
 // currVer will represent the latest version. For now it is hard coded, later, this will be automatically updated.
 
-const currVer = "1.0.0"
+const currVer = "1.0.2"
 
 // config is a structure, that will contain the configuration settings for our application.
 // for now it is just aq port and a current environment
@@ -31,7 +31,7 @@ type application struct {
 func main() {
 	//fmt.Println("new project started")
 
-	//config struct instance
+	//Config struct instance
 
 	var cfg config
 

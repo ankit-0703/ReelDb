@@ -1,17 +1,17 @@
 package main
 
-import(
+import (
+	"net/http"
 
-"net/http"
-"github.com/julienschmidt/httprouter"
+	"github.com/julienschmidt/httprouter"
 )
 
-func (app *application) routes() http.Handler{
+func (app *application) routes() http.Handler {
 	router := httprouter.New()
 
-	router.HandlerFunc(http.MethodGet, "/v1/healthcheck",app.healthcheckHandler)
-	router.HandlerFunc(http.MethodPost,"/v1/Reels",app.createReelHandler)
-	router.HandlerFunc(http.MethodGet,"/v1/Reels/ :id",app.showReelHandler)
+	router.HandlerFunc(http.MethodGet, "/v1/healthcheck", app.healthcheckHandler)
+	router.HandlerFunc(http.MethodPost, "/v1/Reels", app.createReelHandler)
+	router.HandlerFunc(http.MethodGet, "/v1/Reels/:id", app.showReelHandler)
 
 	return router
 }
